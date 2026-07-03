@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sai Sanjay | Financial Data Analyst Portfolio</title>
+    <meta name="description" content="Portfolio of Sai Sanjay - Financial Data Analyst specializing in Risk Analytics, SQL, Python, Power BI, and Machine Learning.">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+    
+    <!-- Background Dynamic Canvas -->
+    <canvas id="particle-canvas" class="no-print"></canvas>
+
+    <!-- NAVIGATION BAR -->
+    <nav class="navbar no-print">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-accent">&lt;</span>Sai Sanjay<span class="logo-accent"> /&gt;</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#certifications" class="nav-link">Certifications</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button id="theme-toggle" class="btn-icon" aria-label="Toggle Dark/Light Mode">
+                    <!-- Sun Icon (shown in dark mode) -->
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                    <!-- Moon Icon (shown in light mode) -->
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                </button>
+                <button
+    onclick="window.open('https://drive.google.com/file/d/1yLB7aTKAKAd4e44mmYaV6gLq2Wt0W6bM/view', '_blank')"
+    class="btn btn-primary resume-btn">
+    View Resume
+</button>
+            </div>
+
+            <!-- Mobile Hamburger Menu Button -->
+            <button id="mobile-menu-btn" class="mobile-toggle no-print" aria-label="Toggle menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MOBILE OVERLAY MENU -->
+    <div id="mobile-nav" class="mobile-nav no-print">
+        <ul class="mobile-nav-links">
+            <li><a href="#about" class="mobile-link" onclick="toggleMobileMenu()">About</a></li>
+            <li><a href="#skills" class="mobile-link" onclick="toggleMobileMenu()">Skills</a></li>
+            <li><a href="#experience" class="mobile-link" onclick="toggleMobileMenu()">Experience</a></li>
+            <li><a href="#projects" class="mobile-link" onclick="toggleMobileMenu()">Projects</a></li>
+            <li><a href="#certifications" class="mobile-link" onclick="toggleMobileMenu()">Certifications</a></li>
+            <li><a href="#contact" class="mobile-link" onclick="toggleMobileMenu()">Contact</a></li>
+            <li><button onclick="window.print(); toggleMobileMenu();" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Print Resume</button></li>
+        </ul>
+    </div>
+
+    <!-- MAIN APP WRAPPER -->
+    <main class="no-print">
+        
+        <!-- HERO SECTION -->
+        <section id="hero" class="hero-section">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <span class="badge hero-badge">Financial Data Analyst</span>
+                    <h1 class="hero-title">
+                        Hi, I'm <span class="gradient-text">Sai Sanjay</span>
+                    </h1>
+                    <h2 class="hero-subtitle">
+                        <span id="typing-text"></span><span class="typing-cursor">|</span>
+                    </h2>
+                    <p class="hero-description">
+                        A jack of all trades is a master of none, but oftentimes better than a master of one. 
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#projects" class="btn btn-primary">View Projects</a>
+                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                    </div>
+                    <div class="hero-socials">
+                        <a href="https://github.com/SAISANJAY-PARTH" target="_blank" aria-label="GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/sai-s-198a14276" target="_blank" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                        </a>
+                        <a href="mailto:saireshi19@gmail.com" aria-label="Email">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="visual-card-wrapper">
+                        <!-- Dynamic Code & SQL Dashboard Terminal Card -->
+                        <div class="dashboard-card card">
+                            <div class="dashboard-header">
+                                <div class="dots-wrapper">
+                                    <span class="dot red"></span>
+                                    <span class="dot yellow"></span>
+                                    <span class="dot green"></span>
+                                </div>
+                                <div class="tabs-container">
+                                    <button class="console-tab active" data-tab="py">regime.py</button>
+                                    <button class="console-tab" data-tab="sql">momentum.sql</button>
+                                    <button class="console-tab" data-tab="json">kpis.json</button>
+                                </div>
+                            </div>
+                            <div class="dashboard-body">
+                                <!-- Python Code block -->
+                                <pre id="code-py" class="console-block active"><code><span class="keyword">import</span> numpy <span class="keyword">as</span> np
+<span class="keyword">from</span> sklearn.cluster <span class="keyword">import</span> KMeans
+
+<span class="comment"># Cluster returns & volatilities</span>
+data = np.column_stack((ret, vol))
+model = KMeans(n_clusters=<span class="number">3</span>, n_init=<span class="number">10</span>)
+regimes = model.fit_predict(data)
+
+print(<span class="string">"Regimes:"</span>, set(regimes))</code></pre>
+                                
+                                <!-- SQL Code block -->
+                                <pre id="code-sql" class="console-block"><code><span class="keyword">WITH</span> stock_stats <span class="keyword">AS</span> (
+  <span class="keyword">SELECT</span> ticker, date, close,
+  AVG(close) OVER(PARTITION <span class="keyword">BY</span> ticker
+      <span class="keyword">ORDER BY</span> date ROWS <span class="number">50</span> PRECEDING) <span class="keyword">AS</span> ma_50
+  <span class="keyword">FROM</span> market_ticks
+)
+<span class="keyword">SELECT</span> ticker, close, ma_50,
+(close - ma_50) / ma_50 <span class="keyword">AS</span> momentum
+<span class="keyword">FROM</span> stock_stats;</code></pre>
+                                
+                                <!-- JSON/Metrics block -->
+                                <pre id="code-json" class="console-block"><code>{
+  <span class="string">"portfolio"</span>: <span class="string">"QuadraForge Alpha"</span>,
+  <span class="string">"risk_segment"</span>: <span class="string">"Moderate-High"</span>,
+  <span class="string">"backtest_stocks"</span>: <span class="number">100</span>,
+  <span class="string">"metrics"</span>: {
+    <span class="string">"sharpe_ratio"</span>: <span class="number">1.82</span>,
+    <span class="string">"max_drawdown"</span>: <span class="string">"-14.2%"</span>
+  }
+}</code></pre>
+                            </div>
+                        </div>
+                        <div class="metric-mini-card">
+                            <span class="metric-title">ROC-AUC Accuracy</span>
+                            <span class="metric-value">0.85</span>
+                            <span class="metric-label">Churn Model</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="scroll-indicator">
+                <a href="#about" aria-label="Scroll Down">
+                    <div class="mouse">
+                        <div class="wheel"></div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about" class="section">
+            <div class="container">
+                <span class="section-tag text-gradient">Who I Am</span>
+                <h2 class="section-title">About Me</h2>
+                
+                <div class="about-grid">
+                    <div class="about-text scroll-reveal">
+                        <p class="lead-text">
+                            I work at the intersection of <strong>finance</strong>, <strong>data engineering</strong>, and <strong>analytics</strong>.
+                        </p>
+                        <p>
+                            I focus on building data systems that process, structure, and analyze financial data to support decision-making. Whether it is designing robust ETL workflows, coding volatility models, or generating dashboard reporting pipelines, I specialize in transforming raw financial records into strategic insights.
+                        </p>
+                        <p>
+                            Currently based in <strong>Pune, MH, India</strong>, I am actively exploring opportunities in <strong>Financial Data Engineering, Data Analytics, and Investment Research</strong>.
+                        </p>
+                        
+                        <div class="cta-mini">
+    <strong>Need my full CV?</strong>
+    <button
+        onclick="window.open('https://drive.google.com/file/d/1yLB7aTKAKAd4e44mmYaV6gLq2Wt0W6bM/view', '_blank')"
+        class="btn btn-secondary btn-sm">
+        View Resume
+    </button>
+</div>
+                    </div>
+                    
+                    <div class="about-cards-grid">
+                        <div class="feature-card card scroll-reveal">
+                            <div class="card-icon">📈</div>
+                            <h3>Financial Analytics</h3>
+                            <p>Portfolio metrics, volatility tracking, market regime classification, and asset valuation models.</p>
+                        </div>
+                        <div class="feature-card card card-delay-1 scroll-reveal">
+                            <div class="card-icon">⚡</div>
+                            <h3>ETL & Engineering</h3>
+                            <p>Ingesting and cleaning stock ticks, creating warehouse schemas, and automating database triggers.</p>
+                        </div>
+                        <div class="feature-card card card-delay-2 scroll-reveal">
+                            <div class="card-icon">📊</div>
+                            <h3>BI & Dashboards</h3>
+                            <p>Creating executive dashboard suites in Power BI and Tableau with automatic KPI alerts.</p>
+                        </div>
+                        <div class="feature-card card card-delay-3 scroll-reveal">
+                            <div class="card-icon">🧠</div>
+                            <h3>Machine Learning</h3>
+                            <p>Building classification models, churn warning signals, and SHAP feature explainability.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section id="skills" class="section bg-alt">
+            <div class="container">
+                <span class="section-tag text-gradient">Capabilities</span>
+                <h2 class="section-title">Technical Skills</h2>
+                
+                <div class="skills-grid">
+                    <div class="skill-category card scroll-reveal">
+                        <h3>Programming & Analytics</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python (Pandas, NumPy, Scikit-learn)</span>
+                            <span class="skill-tag">SQL (PostgreSQL)</span>
+                            <span class="skill-tag">CTEs & Window Functions</span>
+                            <span class="skill-tag">Advanced Excel</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category card card-delay-1 scroll-reveal">
+                        <h3>Financial Analytics</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Portfolio Analysis</span>
+                            <span class="skill-tag">Risk Assessment</span>
+                            <span class="skill-tag">Market Data Analysis</span>
+                            <span class="skill-tag">Time-Series & Volatility Analysis</span>
+                            <span class="skill-tag">KPI Tracking</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category card card-delay-2 scroll-reveal">
+                        <h3>Data Visualization & BI</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Power BI</span>
+                            <span class="skill-tag">Tableau</span>
+                            <span class="skill-tag">Dashboard Architecture</span>
+                            <span class="skill-tag">Exploratory Data Analysis (EDA)</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category card card-delay-3 scroll-reveal">
+                        <h3>Machine Learning & Engineering</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Classification & Regression</span>
+                            <span class="skill-tag">SHAP Explainability</span>
+                            <span class="skill-tag">ETL & Data Warehousing</span>
+                            <span class="skill-tag">Git / GitHub</span>
+                            <span class="skill-tag">Streamlit</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE SECTION -->
+        <section id="experience" class="section">
+            <div class="container">
+                <span class="section-tag text-gradient">History</span>
+                <h2 class="section-title">Professional Experience</h2>
+                
+                <div class="timeline">
+                    <!-- Item 0 - QuadraForge Finance -->
+                    <div class="timeline-item scroll-reveal">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">Dec 2025 — Present</div>
+                        <div class="timeline-content card">
+                            <span class="badge duration-badge text-gradient">Founder & Builder</span>
+                            <h3>Founder & Lead Builder</h3>
+                            <h4 class="company-name text-gradient">QuadraForge Finance</h4>
+                            <ul class="timeline-bullets">
+                                <li>Built an education-focused financial literacy platform with interactive tools and user-focused learning flows to help people understand money through clarity and self-driven learning.</li>
+                                <li>Shifted the learning ecosystem from instructor-led coaching to a platform-based system, enabling users to explore financial concepts independently.</li>
+                                <li>Analyzed user engagement and tool usage patterns to optimize information delivery and improve learning retention.</li>
+                                <li>Added budget models and interactive calculators to simplify complex corporate finance planning and personal budgeting topics.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Item 1 - Unified Mentor -->
+                    <div class="timeline-item scroll-reveal">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">Mar 2026 — May 2026</div>
+                        <div class="timeline-content card">
+                            <span class="badge duration-badge">Internship</span>
+                            <h3>Data Analyst Intern</h3>
+                            <h4 class="company-name text-gradient">Unified Mentor</h4>
+                            <ul class="timeline-bullets">
+                                <li>Built automated <strong>Python + SQL analytics workflows</strong> for structured data processing, KPI reporting, and business decision support.</li>
+                                <li>Performed data cleaning, transformation, and validation using <strong>Pandas, NumPy, and PostgreSQL</strong>, improving data consistency and reducing manual reporting effort.</li>
+                                <li>Developed interactive <strong>Power BI and Tableau dashboards</strong> for KPI monitoring, trend analysis, and executive reporting.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 - Savvy Merit -->
+                    <div class="timeline-item scroll-reveal">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">Jul 2025 — Sep 2025</div>
+                        <div class="timeline-content card">
+                            <span class="badge duration-badge">Internship</span>
+                            <h3>Research Analyst Intern</h3>
+                            <h4 class="company-name text-gradient">Savvy Merit</h4>
+                            <ul class="timeline-bullets">
+                                <li>Conducted financial analysis of <strong>30+ equities</strong> using earnings data, corporate actions, and macroeconomic indicators to evaluate valuation trends and portfolio risk exposure.</li>
+                                <li>Automated financial data processing workflows using Python, reducing manual analysis effort by <strong>40%</strong> and improving reporting efficiency.</li>
+                                <li>Produced structured investment research reports highlighting sector trends, valuation signals, and key portfolio risk factors.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section id="projects" class="section bg-alt">
+            <div class="container">
+                <span class="section-tag text-gradient">Portfolio</span>
+                <h2 class="section-title">Featured Projects</h2>
+                
+                <!-- Project Filter Buttons -->
+                <div class="filter-buttons no-print">
+                    <button class="filter-btn active" data-filter="all">All Projects</button>
+                    <button class="filter-btn" data-filter="fintech">FinTech & ML</button>
+                    <button class="filter-btn" data-filter="bi">BI & Analytics</button>
+                    <button class="filter-btn" data-filter="web">Web & Education</button>
+                </div>
+                
+                <!-- Projects Grid -->
+                <div class="projects-grid">
+                    
+                    <!-- Project 1 -->
+                    <div class="project-card card scroll-reveal" data-category="web">
+                        <div class="project-header">
+                            <span class="project-icon">📈</span>
+                            <span class="badge project-badge">Dec 2025 - Present</span>
+                        </div>
+                        <h3>QuadraForge Finance</h3>
+                        <p class="project-desc">An education-focused financial literacy initiative designed to help users explore money, budgeting, and investment concepts independently through interactive tools.</p>
+                        <ul class="project-details">
+                            <li>Built an interactive literacy portal with learning guides and calculators.</li>
+                            <li>Analyzed visitor engagement rates to optimize information discovery flows.</li>
+                            <li>Emphasized simplified money principles rather than sales-driven narratives.</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">Web Development</span>
+                            <span class="tech-tag">Wix Website Builder</span>
+                            <span class="tech-tag">UX Analytics</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://quadraforge.in" target="_blank" class="btn btn-secondary btn-sm">Live Site</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card card scroll-reveal" data-category="fintech">
+                        <div class="project-header">
+                            <span class="project-icon">🤖</span>
+                            <span class="badge project-badge">Mar 2026 - Apr 2026</span>
+                        </div>
+                        <h3>Market Analytics & Regime Detection</h3>
+                        <p class="project-desc">An advanced stock analytics platform leveraging ML clustering to classify risk environments and track indicators.</p>
+                        <ul class="project-details">
+                            <li>Real-time stock analysis and charts (Candlesticks, EMAs, RSI) via Yahoo Finance API.</li>
+                            <li>Implemented KMeans clustering on assets' return & volatility metrics to detect regimes.</li>
+                            <li>Engineered custom scores assessing stock margins, PE multiples, and ROE ratios.</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">KMeans</span>
+                            <span class="tech-tag">yFinance</span>
+                            <span class="tech-tag">Streamlit</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/SAISANJAY-PARTH/quadraboard.git" target="_blank" class="btn btn-secondary btn-sm">GitHub Repo</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="project-card card scroll-reveal" data-category="fintech">
+                        <div class="project-header">
+                            <span class="project-icon">🛡️</span>
+                            <span class="badge project-badge">Feb 2026 - Apr 2026</span>
+                        </div>
+                        <h3>Bank Customer Churn Predictor</h3>
+                        <p class="project-desc">End-to-end customer churn forecasting application to identify customer flight risks and target retention.</p>
+                        <ul class="project-details">
+                            <li>Developed Random Forest model achieving a 0.85 ROC-AUC score.</li>
+                            <li>Created custom risk segments (Low, Medium, High) for over 1,000 customers.</li>
+                            <li>Applied SHAP explanation model to analyze feature weights and prevent blind spots.</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">Scikit-Learn</span>
+                            <span class="tech-tag">SHAP</span>
+                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">Python</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/SAISANJAY-PARTH/bank-churn-prediction-ml" target="_blank" class="btn btn-secondary btn-sm">GitHub Repo</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 4 -->
+                    <div class="project-card card scroll-reveal" data-category="bi">
+                        <div class="project-header">
+                            <span class="project-icon">📞</span>
+                            <span class="badge project-badge">Feb 2025</span>
+                        </div>
+                        <h3>TalkTrack: Call Center Ops Warehouse</h3>
+                        <p class="project-desc">A multi-channel customer operations data warehouse for sentiment modeling and operational optimization.</p>
+                        <ul class="project-details">
+                            <li>Modeled star schema structure tracking chat, calls, emails, and website events.</li>
+                            <li>Executed ETL pipelines converting transactional tables into structured data.</li>
+                            <li>Created sentiment tracking and response rate dashboards in Power BI.</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">Power BI</span>
+                            <span class="tech-tag">ETL</span>
+                            <span class="tech-tag">SQL Server</span>
+                            <span class="tech-tag">Data Modeling</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/SAISANJAY-PARTH/TalkTrack-Data-Warehouse-for-Optimizing-Call-Center-Operations" target="_blank" class="btn btn-secondary btn-sm">GitHub Repo</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 5 -->
+                    <div class="project-card card scroll-reveal" data-category="bi">
+                        <div class="project-header">
+                            <span class="project-icon">💼</span>
+                            <span class="badge project-badge">Dec 2025</span>
+                        </div>
+                        <h3>FP&A Budgeting & Forecasting</h3>
+                        <p class="project-desc">A corporate forecasting and driver-based P&L stress testing dashboard inspired by a TCS case study.</p>
+                        <ul class="project-details">
+                            <li>Created driver inputs for dynamic operating leverage and tax scenario changes.</li>
+                            <li>Mapped variance calculations comparing forecast targets to static annual budgets.</li>
+                            <li>Automated dynamic recalculation when editing core growth variables.</li>
+                        </ul>
+                        
+
+
+                        <div class="project-tech">
+                            <span class="tech-tag">Financial Modeling</span>
+                            <span class="tech-tag">Scenario Analysis</span>
+                            <span class="tech-tag">Excel</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://docs.google.com/document/d/19WLVm-C_ShCs1JSfnaC5nZPC1aqABNAfpHqb32zx8KE/edit?tab=t.0" target="_blank" class="btn btn-secondary btn-sm">link</a>
+                        </div>
+                    </div>
+                    
+
+                    <!-- Project 6 -->
+                    <div class="project-card card scroll-reveal" data-category="bi">
+                        <div class="project-header">
+                            <span class="project-icon">📊</span>
+                            <span class="badge project-badge">Dec 2025</span>
+                        </div>
+                        <h3>Stock Market Analytics (Tableau)</h3>
+                        <p class="project-desc">An interactive price tracking tool showing moving averages, volume growth, and trend indicators.</p>
+                        <ul class="project-details">
+                            <li>Engineered 50-day and 200-day moving average metrics using Python.</li>
+                            <li>Built filter options analyzing volatility breakouts on multiple tickers.</li>
+                            <li>Reduced visual data-gathering time by over 25%.</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">Tableau</span>
+                            <span class="tech-tag">Python ETL</span>
+                            <span class="tech-tag">Data Visualization</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/SAISANJAY-PARTH/Stock-Market-Analysis-In-Tableau" target="_blank" class="btn btn-secondary btn-sm">GitHub Repo</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CERTIFICATIONS SECTION -->
+        <section id="certifications" class="section">
+            <div class="container">
+                <span class="section-tag text-gradient">Qualifications</span>
+                <h2 class="section-title">Licenses & Certifications</h2>
+                
+                <div class="certifications-grid">
+                    
+                    <div class="cert-card card scroll-reveal">
+                        <div class="cert-logo">💼</div>
+                        <div class="cert-info">
+                            <h3>Forward Program Graduate</h3>
+                            <p class="cert-issuer">McKinsey & Company</p>
+                            <p class="cert-date">Dec 2025</p>
+                            <span class="cert-skill">Skills: Problem Solving & Decision Making</span>
+                        </div>
+                    </div>
+
+                    <div class="cert-card card scroll-reveal">
+                        <div class="cert-logo">🐍</div>
+                        <div class="cert-info">
+                            <h3>Data Analyst Professional</h3>
+                            <p class="cert-issuer">IBM</p>
+                            <p class="cert-date">Feb 2026</p>
+                            <a href="https://coursera.org/share/2c2040a2a1ca3a34e3813dfbaf1e70d7" target="_blank" class="cert-link">View</a>
+                        </div>
+                    </div>
+
+                    <div class="cert-card card scroll-reveal">
+                        <div class="cert-logo">📈</div>
+                        <div class="cert-info">
+                            <h3>SEBI Investor Certification</h3>
+                            <p class="cert-issuer">National Institute of Securities Markets (NISM)</p>
+                        </div>
+                    </div>
+
+                    <div class="cert-card card scroll-reveal">
+                        <div class="cert-logo">🤖</div>
+                        <div class="cert-info">
+                            <h3>Copilot Studio Specialist</h3>
+                            <p class="cert-issuer">Microsoft</p>
+                        </div>
+                    </div>
+
+                    <div class="cert-card card scroll-reveal">
+                        <div class="cert-logo">☁️</div>
+                        <div class="cert-info">
+                            <h3>AWS Cloud Practitioner CLF</h3>
+                            <p class="cert-issuer">Udemy</p>
+                        </div>
+                    </div>
+
+                    <div class="cert-card card scroll-reveal">
+                        <div class="cert-logo">🧠</div>
+                        <div class="cert-info">
+                            <h3>AI Fundamentals</h3>
+                            <p class="cert-issuer">IBM</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="section bg-alt">
+            <div class="container">
+                <div class="contact-card-centered card scroll-reveal">
+                    <span class="section-tag text-gradient">Connect</span>
+                    <h2 class="section-title-centered">Get In Touch</h2>
+                    <p class="contact-intro">I am seeking positions as a Financial Data Analyst, Risk Specialist, or Data Engineer Intern. Drop me a line if you have an opening, want to discuss market models, or discuss QuadraForge Finance!</p>
+                    
+                    <div class="contact-details-row">
+                        <div class="contact-item-centered">
+                            <span class="icon">📍</span>
+                            <div>
+                                <h4>Location</h4>
+                                <p>Pune, MH, India</p>
+                            </div>
+                        </div>
+                        <div class="contact-item-centered">
+                            <span class="icon">✉️</span>
+                            <div>
+                                <h4>Email</h4>
+                                <p><a href="mailto:saireshi19@gmail.com">saireshi19@gmail.com</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="container footer-content">
+                <p>&copy; 2026 Sai Sanjay. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="https://github.com/SAISANJAY-PARTH" target="_blank">GitHub</a>
+                    <a href="https://www.linkedin.com/in/sai-s-198a14276" target="_blank">LinkedIn</a>
+                    <a href="mailto:saireshi19@gmail.com">Email</a>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- SCRIPT LINK -->
+    <script src="script.js"></script>
+</body>
+</html>
