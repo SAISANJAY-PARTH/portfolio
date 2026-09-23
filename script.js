@@ -3,7 +3,7 @@
 // ==========================================================================
 const words = [
     "Financial Data Analyst",
-    "Risk Analytics Specialist",
+    "Market Intelligence Builder",
     "Machine Learning Developer",
     "Business Intelligence Architect"
 ];
@@ -18,7 +18,7 @@ const typingTextElement = document.getElementById("typing-text");
 function type() {
     if (!typingTextElement) return;
     const currentWord = words[wordIndex];
-    
+
     if (isDeleting) {
         charIndex--;
         typingTextElement.textContent = currentWord.substring(0, charIndex);
@@ -131,7 +131,7 @@ const mobileNavOverlay = document.getElementById("mobile-nav");
 function toggleMobileMenu() {
     if (!mobileNavOverlay || !mobileMenuBtn) return;
     mobileNavOverlay.classList.toggle("open");
-    
+
     if (mobileNavOverlay.classList.contains("open")) {
         mobileMenuBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>`;
     } else {
@@ -153,7 +153,7 @@ const navLinks = document.querySelectorAll(".nav-link");
 window.addEventListener("scroll", () => {
     let current = "";
     const navbar = document.querySelector(".navbar");
-    
+
     if (window.scrollY > 30) {
         navbar.style.boxShadow = "var(--card-shadow)";
     } else {
@@ -181,7 +181,7 @@ window.addEventListener("scroll", () => {
 // ==========================================================================
 function initScrollReveal() {
     const revealElements = document.querySelectorAll(".scroll-reveal");
-    
+
     const revealObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -206,11 +206,11 @@ function initScrollReveal() {
 function initParticleCanvas() {
     const canvas = document.getElementById("particle-canvas");
     if (!canvas) return;
-    
+
     const ctx = canvas.getContext("2d");
     let particlesArray = [];
     let particleCount = 45;
-    
+
     if (window.innerWidth < 768) {
         particleCount = 20;
     }
@@ -290,13 +290,13 @@ function initParticleCanvas() {
     function connectParticles() {
         const maxDist = 135;
         for (let a = 0; a < particlesArray.length; a++) {
-            
+
             // Connect to mouse pointer
             if (mouse.x !== null && mouse.y !== null) {
                 const mdx = particlesArray[a].x - mouse.x;
                 const mdy = particlesArray[a].y - mouse.y;
                 const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
-                
+
                 if (mdist < mouse.radius) {
                     ctx.strokeStyle = mouseLineColor;
                     ctx.lineWidth = 1.2;
@@ -327,12 +327,12 @@ function initParticleCanvas() {
 
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
+
         for (let i = 0; i < particlesArray.length; i++) {
             particlesArray[i].update();
             particlesArray[i].draw();
         }
-        
+
         connectParticles();
         requestAnimationFrame(animate);
     }
