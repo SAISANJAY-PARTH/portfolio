@@ -24,7 +24,7 @@ body.dark-theme {
     --bg-secondary: #0f131c;    /* Card base background */
     --bg-tertiary: #161c28;     /* Inner background/borders */
     --bg-alt: #05070b;          /* Section contrast background */
-    
+
     --text-primary: #f8fafc;    /* Off-white primary */
     --text-secondary: #94a3b8;  /* Cool grey secondary */
     --text-muted: #475569;      /* Border tone contrast */
@@ -38,7 +38,7 @@ body.dark-theme {
     --border-hover: rgba(255, 255, 255, 0.12);
     --card-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
     --glass-bg: rgba(8, 11, 17, 0.8);
-    
+
     --pre-bg: #05070c;
     --keyword: #f472b6;
     --string: #34d399;
@@ -52,7 +52,7 @@ body.light-theme {
     --bg-secondary: #ffffff;
     --bg-tertiary: #f1f5f9;
     --bg-alt: #f1f5f9;
-    
+
     --text-primary: #0f172a;
     --text-secondary: #475569;
     --text-muted: #94a3b8;
@@ -1269,7 +1269,7 @@ body.light-theme .moon-icon { display: block; }
     .navbar .resume-btn {
         display: none;
     }
-    
+
     /* Perfect Mobile Timeline Shift */
     .timeline::after {
         left: 15px;
@@ -1386,7 +1386,7 @@ body.light-theme .moon-icon { display: block; }
         color: #000000 !important;
         font-family: 'Times New Roman', Times, serif;
     }
-    
+
     .no-print, main, nav, footer, .scroll-indicator, #particle-canvas {
         display: none !important;
     }
