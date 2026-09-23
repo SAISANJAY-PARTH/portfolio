@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sai Sanjay | Financial Data Analyst Portfolio</title>
-    <meta name="description" content="Portfolio of Sai Sanjay - Financial Data Analyst specializing in Risk Analytics, SQL, Python, Power BI, and Machine Learning.">
+    <meta name="description" content="Portfolio of Sai Sanjay - Financial Data Analyst specializing in Market Analytics, SQL, Python, Power BI, and Machine Learning.">
     <link rel="stylesheet" href="style.css">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body class="dark-theme">
-    
+
     <!-- Background Dynamic Canvas -->
     <canvas id="particle-canvas" class="no-print"></canvas>
 
@@ -22,7 +22,7 @@
             <a href="#" class="logo">
                 <span class="logo-accent">&lt;</span>Sai Sanjay<span class="logo-accent"> /&gt;</span>
             </a>
-            
+
             <ul class="nav-links">
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
@@ -68,7 +68,7 @@
 
     <!-- MAIN APP WRAPPER -->
     <main class="no-print">
-        
+
         <!-- HERO SECTION -->
         <section id="hero" class="hero-section">
             <div class="hero-container">
@@ -81,7 +81,7 @@
                         <span id="typing-text"></span><span class="typing-cursor">|</span>
                     </h2>
                     <p class="hero-description">
-                        A jack of all trades is a master of none, but oftentimes better than a master of one. 
+                        A jack of all trades is a master of none, but oftentimes better than a master of one.
                     </p>
                     <div class="hero-cta">
                         <a href="#projects" class="btn btn-primary">View Projects</a>
@@ -94,7 +94,7 @@
                         <a href="https://www.linkedin.com/in/sai-s-198a14276" target="_blank" aria-label="LinkedIn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
                         </a>
-                        <a href="mailto:saireshi19@gmail.com" aria-label="Email">
+                        <a href="mailto:saisanjay138@gmail.com" aria-label="Email">
                             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                         </a>
                     </div>
@@ -111,23 +111,25 @@
                                     <span class="dot green"></span>
                                 </div>
                                 <div class="tabs-container">
-                                    <button class="console-tab active" data-tab="py">regime.py</button>
+                                    <button class="console-tab active" data-tab="py">indicators.py</button>
                                     <button class="console-tab" data-tab="sql">momentum.sql</button>
                                     <button class="console-tab" data-tab="json">kpis.json</button>
                                 </div>
                             </div>
                             <div class="dashboard-body">
                                 <!-- Python Code block -->
-                                <pre id="code-py" class="console-block active"><code><span class="keyword">import</span> numpy <span class="keyword">as</span> np
-<span class="keyword">from</span> sklearn.cluster <span class="keyword">import</span> KMeans
+                                <pre id="code-py" class="console-block active"><code><span class="keyword">import</span> pandas <span class="keyword">as</span> pd
 
-<span class="comment"># Cluster returns & volatilities</span>
-data = np.column_stack((ret, vol))
-model = KMeans(n_clusters=<span class="number">3</span>, n_init=<span class="number">10</span>)
-regimes = model.fit_predict(data)
+<span class="comment"># RSI (14) technical indicator</span>
+<span class="keyword">def</span> rsi(close, period=<span class="number">14</span>):
+    delta = close.diff()
+    gain = delta.clip(lower=<span class="number">0</span>)
+    loss = -delta.clip(upper=<span class="number">0</span>)
+    avg_gain = gain.rolling(period).mean()
+    avg_loss = loss.rolling(period).mean()
+    rs = avg_gain / avg_loss
+    <span class="keyword">return</span> <span class="number">100</span> - (<span class="number">100</span> / (<span class="number">1</span> + rs))</code></pre>
 
-print(<span class="string">"Regimes:"</span>, set(regimes))</code></pre>
-                                
                                 <!-- SQL Code block -->
                                 <pre id="code-sql" class="console-block"><code><span class="keyword">WITH</span> stock_stats <span class="keyword">AS</span> (
   <span class="keyword">SELECT</span> ticker, date, close,
@@ -138,16 +140,13 @@ print(<span class="string">"Regimes:"</span>, set(regimes))</code></pre>
 <span class="keyword">SELECT</span> ticker, close, ma_50,
 (close - ma_50) / ma_50 <span class="keyword">AS</span> momentum
 <span class="keyword">FROM</span> stock_stats;</code></pre>
-                                
+
                                 <!-- JSON/Metrics block -->
                                 <pre id="code-json" class="console-block"><code>{
-  <span class="string">"portfolio"</span>: <span class="string">"QuadraForge Alpha"</span>,
-  <span class="string">"risk_segment"</span>: <span class="string">"Moderate-High"</span>,
-  <span class="string">"backtest_stocks"</span>: <span class="number">100</span>,
-  <span class="string">"metrics"</span>: {
-    <span class="string">"sharpe_ratio"</span>: <span class="number">1.82</span>,
-    <span class="string">"max_drawdown"</span>: <span class="string">"-14.2%"</span>
-  }
+  <span class="string">"project"</span>: <span class="string">"QuadraTerminal"</span>,
+  <span class="string">"indicators_tracked"</span>: <span class="number">12</span>,
+  <span class="string">"timeframes"</span>: [<span class="string">"15m"</span>, <span class="string">"1H"</span>, <span class="string">"4H"</span>, <span class="string">"1D"</span>, <span class="string">"1W"</span>, <span class="string">"1M"</span>],
+  <span class="string">"data_sources"</span>: [<span class="string">"Upstox"</span>, <span class="string">"Yahoo Finance"</span>]
 }</code></pre>
                             </div>
                         </div>
@@ -159,7 +158,7 @@ print(<span class="string">"Regimes:"</span>, set(regimes))</code></pre>
                     </div>
                 </div>
             </div>
-            
+
             <div class="scroll-indicator">
                 <a href="#about" aria-label="Scroll Down">
                     <div class="mouse">
@@ -174,19 +173,19 @@ print(<span class="string">"Regimes:"</span>, set(regimes))</code></pre>
             <div class="container">
                 <span class="section-tag text-gradient">Who I Am</span>
                 <h2 class="section-title">About Me</h2>
-                
+
                 <div class="about-grid">
                     <div class="about-text scroll-reveal">
                         <p class="lead-text">
                             I work at the intersection of <strong>finance</strong>, <strong>data engineering</strong>, and <strong>analytics</strong>.
                         </p>
                         <p>
-                            I focus on building data systems that process, structure, and analyze financial data to support decision-making. Whether it is designing robust ETL workflows, coding volatility models, or generating dashboard reporting pipelines, I specialize in transforming raw financial records into strategic insights.
+                            I focus on building data systems that process, structure, and analyze financial data to support decision-making. Whether it's designing ETL workflows, computing technical indicators, or building AI-driven research tools, I specialize in turning raw financial data into structured, explainable insights.
                         </p>
                         <p>
-                            Currently based in <strong>Pune, MH, India</strong>, I am actively exploring opportunities in <strong>Financial Data Engineering, Data Analytics, and Investment Research</strong>.
+                            Currently based in <strong>Pune, MH, India</strong>, I am actively exploring opportunities in <strong>Financial Data Analytics, Market Intelligence, and Data Engineering</strong>.
                         </p>
-                        
+
                         <div class="cta-mini">
     <strong>Need my full CV?</strong>
     <button
@@ -196,27 +195,27 @@ print(<span class="string">"Regimes:"</span>, set(regimes))</code></pre>
     </button>
 </div>
                     </div>
-                    
+
                     <div class="about-cards-grid">
                         <div class="feature-card card scroll-reveal">
                             <div class="card-icon">📈</div>
-                            <h3>Financial Analytics</h3>
-                            <p>Portfolio metrics, volatility tracking, market regime classification, and asset valuation models.</p>
+                            <h3>Market Analytics</h3>
+                            <p>Technical indicators, trend/momentum/volatility analysis, and multi-timeframe market research tools.</p>
                         </div>
                         <div class="feature-card card card-delay-1 scroll-reveal">
                             <div class="card-icon">⚡</div>
                             <h3>ETL & Engineering</h3>
-                            <p>Ingesting and cleaning stock ticks, creating warehouse schemas, and automating database triggers.</p>
+                            <p>Ingesting and cleaning market and business data, building data pipelines, and automating reporting workflows.</p>
                         </div>
                         <div class="feature-card card card-delay-2 scroll-reveal">
                             <div class="card-icon">📊</div>
                             <h3>BI & Dashboards</h3>
-                            <p>Creating executive dashboard suites in Power BI and Tableau with automatic KPI alerts.</p>
+                            <p>Creating executive dashboard suites in Power BI and Tableau for KPI monitoring and reporting.</p>
                         </div>
                         <div class="feature-card card card-delay-3 scroll-reveal">
                             <div class="card-icon">🧠</div>
                             <h3>Machine Learning</h3>
-                            <p>Building classification models, churn warning signals, and SHAP feature explainability.</p>
+                            <p>Classification models, churn risk segmentation, and SHAP feature explainability.</p>
                         </div>
                     </div>
                 </div>
@@ -228,7 +227,7 @@ print(<span class="string">"Regimes:"</span>, set(regimes))</code></pre>
             <div class="container">
                 <span class="section-tag text-gradient">Capabilities</span>
                 <h2 class="section-title">Technical Skills</h2>
-                
+
                 <div class="skills-grid">
                     <div class="skill-category card scroll-reveal">
                         <h3>Programming & Analytics</h3>
@@ -241,12 +240,11 @@ print(<span class="string">"Regimes:"</span>, set(regimes))</code></pre>
                     </div>
 
                     <div class="skill-category card card-delay-1 scroll-reveal">
-                        <h3>Financial Analytics</h3>
+                        <h3>Financial & Market Analytics</h3>
                         <div class="skill-tags">
-                            <span class="skill-tag">Portfolio Analysis</span>
-                            <span class="skill-tag">Risk Assessment</span>
-                            <span class="skill-tag">Market Data Analysis</span>
-                            <span class="skill-tag">Time-Series & Volatility Analysis</span>
+                            <span class="skill-tag">Technical Indicators (RSI, MACD, Bollinger Bands)</span>
+                            <span class="skill-tag">Market Data APIs (Upstox, Yahoo Finance)</span>
+                            <span class="skill-tag">Risk & Volatility Analysis</span>
                             <span class="skill-tag">KPI Tracking</span>
                         </div>
                     </div>
@@ -254,7 +252,7 @@ print(<span class="string">"Regimes:"</span>, set(regimes))</code></pre>
                     <div class="skill-category card card-delay-2 scroll-reveal">
                         <h3>Data Visualization & BI</h3>
                         <div class="skill-tags">
-                            <span class="skill-tag">Power BI</span>
+                            <span class="skill-tag">Power BI (DAX, Power Query)</span>
                             <span class="skill-tag">Tableau</span>
                             <span class="skill-tag">Dashboard Architecture</span>
                             <span class="skill-tag">Exploratory Data Analysis (EDA)</span>
@@ -262,13 +260,33 @@ print(<span class="string">"Regimes:"</span>, set(regimes))</code></pre>
                     </div>
 
                     <div class="skill-category card card-delay-3 scroll-reveal">
-                        <h3>Machine Learning & Engineering</h3>
+                        <h3>Statistics & Machine Learning</h3>
                         <div class="skill-tags">
                             <span class="skill-tag">Classification & Regression</span>
+                            <span class="skill-tag">PyTorch</span>
+                            <span class="skill-tag">Model Evaluation (ROC-AUC)</span>
                             <span class="skill-tag">SHAP Explainability</span>
-                            <span class="skill-tag">ETL & Data Warehousing</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category card scroll-reveal">
+                        <h3>Backend & Deployment</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Flask</span>
+                            <span class="skill-tag">FastAPI</span>
+                            <span class="skill-tag">REST APIs (Postman)</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">AWS</span>
+                            <span class="skill-tag">Supabase</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category card card-delay-1 scroll-reveal">
+                        <h3>Infrastructure & Tools</h3>
+                        <div class="skill-tags">
                             <span class="skill-tag">Git / GitHub</span>
                             <span class="skill-tag">Streamlit</span>
+                            <span class="skill-tag">Multi-Agent AI Systems</span>
                         </div>
                     </div>
                 </div>
@@ -280,7 +298,7 @@ print(<span class="string">"Regimes:"</span>, set(regimes))</code></pre>
             <div class="container">
                 <span class="section-tag text-gradient">History</span>
                 <h2 class="section-title">Professional Experience</h2>
-                
+
                 <div class="timeline">
                     <!-- Item 0 - QuadraForge Finance -->
                     <div class="timeline-item scroll-reveal">
@@ -308,9 +326,10 @@ print(<span class="string">"Regimes:"</span>, set(regimes))</code></pre>
                             <h3>Data Analyst Intern</h3>
                             <h4 class="company-name text-gradient">Unified Mentor</h4>
                             <ul class="timeline-bullets">
-                                <li>Built automated <strong>Python + SQL analytics workflows</strong> for structured data processing, KPI reporting, and business decision support.</li>
+                                <li>Built <strong>Python + SQL analytics workflows</strong> for structured data processing, KPI reporting, and business decision support.</li>
                                 <li>Performed data cleaning, transformation, and validation using <strong>Pandas, NumPy, and PostgreSQL</strong>, improving data consistency and reducing manual reporting effort.</li>
-                                <li>Developed interactive <strong>Power BI and Tableau dashboards</strong> for KPI monitoring, trend analysis, and executive reporting.</li>
+                                <li>Developed <strong>Power BI and Tableau dashboards</strong> using DAX and Power Query for data modeling, KPI monitoring, and executive reporting.</li>
+                                <li>Automated recurring data preparation and ETL tasks, improving reporting turnaround time.</li>
                             </ul>
                         </div>
                     </div>
@@ -324,9 +343,9 @@ print(<span class="string">"Regimes:"</span>, set(regimes))</code></pre>
                             <h3>Research Analyst Intern</h3>
                             <h4 class="company-name text-gradient">Savvy Merit</h4>
                             <ul class="timeline-bullets">
-                                <li>Conducted financial analysis of <strong>30+ equities</strong> using earnings data, corporate actions, and macroeconomic indicators to evaluate valuation trends and portfolio risk exposure.</li>
-                                <li>Automated financial data processing workflows using Python, reducing manual analysis effort by <strong>40%</strong> and improving reporting efficiency.</li>
-                                <li>Produced structured investment research reports highlighting sector trends, valuation signals, and key portfolio risk factors.</li>
+                                <li>Conducted structured data research and trend analysis across <strong>30+ datasets</strong>, focusing on equities and market data.</li>
+                                <li>Automated recurring data-processing steps in Python, cutting manual analysis time on repetitive tasks.</li>
+                                <li>Produced structured research reports summarizing sector- and portfolio-level insights for financial datasets.</li>
                             </ul>
                         </div>
                     </div>
@@ -339,7 +358,7 @@ print(<span class="string">"Regimes:"</span>, set(regimes))</code></pre>
             <div class="container">
                 <span class="section-tag text-gradient">Portfolio</span>
                 <h2 class="section-title">Featured Projects</h2>
-                
+
                 <!-- Project Filter Buttons -->
                 <div class="filter-buttons no-print">
                     <button class="filter-btn active" data-filter="all">All Projects</button>
@@ -347,10 +366,10 @@ print(<span class="string">"Regimes:"</span>, set(regimes))</code></pre>
                     <button class="filter-btn" data-filter="bi">BI & Analytics</button>
                     <button class="filter-btn" data-filter="web">Web & Education</button>
                 </div>
-                
+
                 <!-- Projects Grid -->
                 <div class="projects-grid">
-                    
+
                     <!-- Project 1 -->
                     <div class="project-card card scroll-reveal" data-category="web">
                         <div class="project-header">
@@ -374,55 +393,82 @@ print(<span class="string">"Regimes:"</span>, set(regimes))</code></pre>
                         </div>
                     </div>
 
-                    <!-- Project 2 -->
+                    <!-- Project 2: QuadraAI -->
                     <div class="project-card card scroll-reveal" data-category="fintech">
                         <div class="project-header">
                             <span class="project-icon">🤖</span>
-                            <span class="badge project-badge">Mar 2026 - Apr 2026</span>
+                            <span class="badge project-badge">May 2026 - Present</span>
                         </div>
-                        <h3>Market Analytics & Regime Detection</h3>
-                        <p class="project-desc">An advanced stock analytics platform leveraging ML clustering to classify risk environments and track indicators.</p>
+                        <h3>QuadraAI — AI-Powered Financial Research Assistant</h3>
+                        <p class="project-desc">A multi-agent financial research platform that routes each query to a domain-specific AI agent instead of relying on one generic model.</p>
                         <ul class="project-details">
-                            <li>Real-time stock analysis and charts (Candlesticks, EMAs, RSI) via Yahoo Finance API.</li>
-                            <li>Implemented KMeans clustering on assets' return & volatility metrics to detect regimes.</li>
-                            <li>Engineered custom scores assessing stock margins, PE multiples, and ROE ratios.</li>
+                            <li>Built <strong>8 specialized agents</strong> — Portfolio Analysis, Technical Analysis, Fundamental Analysis, Risk Management, Goal Planning, Personal CFO, News & Sentiment, and Education.</li>
+                            <li>Integrated Upstox, Yahoo Finance, and News APIs to ground agent responses in live market data, financial statements, and news sentiment rather than model memory alone.</li>
+                            <li>Combined multiple LLM backends (Groq, DeepSeek, Sarvam) with a Flask + Supabase backend for agent orchestration and structured output generation.</li>
                         </ul>
                         <div class="project-tech">
                             <span class="tech-tag">Python</span>
-                            <span class="tech-tag">KMeans</span>
-                            <span class="tech-tag">yFinance</span>
-                            <span class="tech-tag">Streamlit</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">Supabase</span>
+                            <span class="tech-tag">Multi-Agent Systems</span>
+                            <span class="tech-tag">REST APIs</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/SAISANJAY-PARTH/quadraboard.git" target="_blank" class="btn btn-secondary btn-sm">GitHub Repo</a>
+                            <a href="https://ai.quadraforge.in" target="_blank" class="btn btn-secondary btn-sm">Live Demo</a>
                         </div>
                     </div>
 
-                    <!-- Project 3 -->
+                    <!-- Project 3: QuadraTerminal -->
+                    <div class="project-card card scroll-reveal" data-category="fintech">
+                        <div class="project-header">
+                            <span class="project-icon">📊</span>
+                            <span class="badge project-badge">Mar 2026 - Apr 2026</span>
+                        </div>
+                        <h3>QuadraTerminal — Market Intelligence & Technical Analysis Platform</h3>
+                        <p class="project-desc">A market-analysis workspace combining live market data, interactive charts, and a full suite of technical indicators across multiple timeframes.</p>
+                        <ul class="project-details">
+                            <li>Implemented <strong>12 technical indicators</strong> — RSI, MACD, Stochastic K/D, Williams %R, CCI, MFI, CMF, ADX, ATR, Bollinger %B, Supertrend, Parabolic SAR — across timeframes from 15-minute to Monthly.</li>
+                            <li>Built data pipelines pulling from Upstox and Yahoo Finance APIs, with local caching to reduce redundant API calls during repeated indicator recalculation.</li>
+                            <li>Implemented trend, momentum, and volatility analysis tools for research and educational use across watchlisted instruments.</li>
+                        </ul>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Pandas</span>
+                            <span class="tech-tag">NumPy</span>
+                            <span class="tech-tag">Plotly</span>
+                            <span class="tech-tag">REST APIs</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/SAISANJAY-PARTH/quadratradeterminal.git" target="_blank" class="btn btn-secondary btn-sm">GitHub Repo</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: Churn -->
                     <div class="project-card card scroll-reveal" data-category="fintech">
                         <div class="project-header">
                             <span class="project-icon">🛡️</span>
                             <span class="badge project-badge">Feb 2026 - Apr 2026</span>
                         </div>
-                        <h3>Bank Customer Churn Predictor</h3>
-                        <p class="project-desc">End-to-end customer churn forecasting application to identify customer flight risks and target retention.</p>
+                        <h3>Customer Churn Prediction & Segmentation System</h3>
+                        <p class="project-desc">An end-to-end churn prediction system to identify high-risk customers and support targeted retention strategy.</p>
                         <ul class="project-details">
-                            <li>Developed Random Forest model achieving a 0.85 ROC-AUC score.</li>
-                            <li>Created custom risk segments (Low, Medium, High) for over 1,000 customers.</li>
-                            <li>Applied SHAP explanation model to analyze feature weights and prevent blind spots.</li>
+                            <li>Built a Random Forest model (<strong>ROC-AUC: 0.85</strong>) to classify churn probability.</li>
+                            <li>Built a Low/Medium/High risk segmentation layer for targeted follow-up.</li>
+                            <li>Applied SHAP explainability to surface the key drivers behind each prediction, keeping the model interpretable.</li>
+                            <li>Built an interactive Streamlit interface to visualize predictions and segments for non-technical stakeholders.</li>
                         </ul>
                         <div class="project-tech">
                             <span class="tech-tag">Scikit-Learn</span>
+                            <span class="tech-tag">Random Forest</span>
                             <span class="tech-tag">SHAP</span>
                             <span class="tech-tag">Streamlit</span>
-                            <span class="tech-tag">Python</span>
                         </div>
                         <div class="project-links">
                             <a href="https://github.com/SAISANJAY-PARTH/bank-churn-prediction-ml" target="_blank" class="btn btn-secondary btn-sm">GitHub Repo</a>
                         </div>
                     </div>
 
-                    <!-- Project 4 -->
+                    <!-- Project 5 -->
                     <div class="project-card card scroll-reveal" data-category="bi">
                         <div class="project-header">
                             <span class="project-icon">📞</span>
@@ -446,7 +492,7 @@ print(<span class="string">"Regimes:"</span>, set(regimes))</code></pre>
                         </div>
                     </div>
 
-                    <!-- Project 5 -->
+                    <!-- Project 6 -->
                     <div class="project-card card scroll-reveal" data-category="bi">
                         <div class="project-header">
                             <span class="project-icon">💼</span>
@@ -459,9 +505,6 @@ print(<span class="string">"Regimes:"</span>, set(regimes))</code></pre>
                             <li>Mapped variance calculations comparing forecast targets to static annual budgets.</li>
                             <li>Automated dynamic recalculation when editing core growth variables.</li>
                         </ul>
-                        
-
-
                         <div class="project-tech">
                             <span class="tech-tag">Financial Modeling</span>
                             <span class="tech-tag">Scenario Analysis</span>
@@ -471,9 +514,8 @@ print(<span class="string">"Regimes:"</span>, set(regimes))</code></pre>
                             <a href="https://docs.google.com/document/d/19WLVm-C_ShCs1JSfnaC5nZPC1aqABNAfpHqb32zx8KE/edit?tab=t.0" target="_blank" class="btn btn-secondary btn-sm">link</a>
                         </div>
                     </div>
-                    
 
-                    <!-- Project 6 -->
+                    <!-- Project 7 -->
                     <div class="project-card card scroll-reveal" data-category="bi">
                         <div class="project-header">
                             <span class="project-icon">📊</span>
@@ -505,9 +547,9 @@ print(<span class="string">"Regimes:"</span>, set(regimes))</code></pre>
             <div class="container">
                 <span class="section-tag text-gradient">Qualifications</span>
                 <h2 class="section-title">Licenses & Certifications</h2>
-                
+
                 <div class="certifications-grid">
-                    
+
                     <div class="cert-card card scroll-reveal">
                         <div class="cert-logo">💼</div>
                         <div class="cert-info">
@@ -571,7 +613,7 @@ print(<span class="string">"Regimes:"</span>, set(regimes))</code></pre>
                     <span class="section-tag text-gradient">Connect</span>
                     <h2 class="section-title-centered">Get In Touch</h2>
                     <p class="contact-intro">I am seeking positions as a Financial Data Analyst, Risk Specialist, or Data Engineer Intern. Drop me a line if you have an opening, want to discuss market models, or discuss QuadraForge Finance!</p>
-                    
+
                     <div class="contact-details-row">
                         <div class="contact-item-centered">
                             <span class="icon">📍</span>
@@ -584,7 +626,7 @@ print(<span class="string">"Regimes:"</span>, set(regimes))</code></pre>
                             <span class="icon">✉️</span>
                             <div>
                                 <h4>Email</h4>
-                                <p><a href="mailto:saireshi19@gmail.com">saireshi19@gmail.com</a></p>
+                                <p><a href="mailto:saisanjay138@gmail.com">saisanjay138@gmail.com</a></p>
                             </div>
                         </div>
                     </div>
@@ -599,7 +641,7 @@ print(<span class="string">"Regimes:"</span>, set(regimes))</code></pre>
                 <div class="footer-links">
                     <a href="https://github.com/SAISANJAY-PARTH" target="_blank">GitHub</a>
                     <a href="https://www.linkedin.com/in/sai-s-198a14276" target="_blank">LinkedIn</a>
-                    <a href="mailto:saireshi19@gmail.com">Email</a>
+                    <a href="mailto:saisanjay138@gmail.com">Email</a>
                 </div>
             </div>
         </footer>
